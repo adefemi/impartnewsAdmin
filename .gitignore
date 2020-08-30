@@ -270,3 +270,4 @@ src/**/*.css.map
 
 .vscode
 .vscode*
+.env
