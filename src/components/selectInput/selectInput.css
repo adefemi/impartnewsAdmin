@@ -1,33 +1,44 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500&display=swap");
 .select-input-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
   overflow: hidden;
 }
+
 .select-input-field .select-comp {
-  background-color: #0378a2;
+  background-color: #084c6b;
 }
+
 .select-input-field .select-comp span, .select-input-field .select-comp input {
   color: white !important;
   font-weight: 600 !important;
 }
+
 .select-input-field .select-input {
   width: 100%;
   min-width: 90px;
   font-size: 12px !important;
-  flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
+
 .select-input-field .select-input .input-field {
   background-color: white;
 }
+
 .select-input-field .select-input.extra {
   min-width: unset;
 }
+
 .select-input-field .input-field {
   border-radius: 0;
   border: none;
-  flex: 3;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
 }
-
 /*# sourceMappingURL=selectInput.css.map */

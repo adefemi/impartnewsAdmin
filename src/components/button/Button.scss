@@ -1,28 +1,32 @@
 @import "../../styles/theme";
 
 .btn-main {
-    background: blue;
+  background: blue;
 }
 
 .btn {
-    font-family: $secondary-font;
-    background: transparent;
-    border-radius: 4px;
-    padding: 0 15px;
-    height: 35px;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    display: flex;
-    align-items: center !important;
-    font-size: 12px;
-    justify-content: center !important;
-    border: 1px solid transparent;
+  font-family: $secondary-font;
+  background: transparent;
+  border-radius: 4px;
+  padding: 0 15px;
+  height: 35px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center !important;
+  font-size: 12px;
+  justify-content: center !important;
+  border: 1px solid transparent;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 }
 
 .disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .btn:focus,
@@ -30,89 +34,87 @@
 .btn-sml:focus,
 .btn-sml:active,
 .btn {
-    outline: none;
-    position: relative;
-    text-decoration: none;
+  outline: none;
+  position: relative;
+  text-decoration: none;
 
-    -webkit-box-shadow: -3px 21px 42px -38px rgba(86, 128, 249, 1);
-    -moz-box-shadow: -3px 21px 42px -38px rgba(86, 128, 249, 1);
-    box-shadow: -3px 21px 42px -38px rgba(86, 128, 249, 1);
+  -webkit-box-shadow: -3px 21px 42px -38px rgba(86, 128, 249, 1);
+  -moz-box-shadow: -3px 21px 42px -38px rgba(86, 128, 249, 1);
+  box-shadow: -3px 21px 42px -38px rgba(86, 128, 249, 1);
 
-
-    &.primary {
-        background: $primary-color;
-        transition: .3s ease;
-
-        &:hover {
-            background: $primary-color-dark;
-        }
-    }
-
-    &.danger {
-        background: $danger-color;
-        transition: .3s ease;
-        &:hover {
-            background: $danger-color-dark;
-        }
-    }
-
-    &.success {
-        background: $success-color;
-        transition: .3s ease;
-        &:hover {
-            background: $success-color-dark;
-        }
-    }
-
-    &.default {
-        background: $white-color;
-        color: $black-color;
-        box-shadow: 0 2px 5px rgba($black-color, 0.1);
-        transition: .3s ease;
-        &:hover {
-            background: $color-text-lighter;
-        }
-    }
-
-    &.loading {
-        opacity: 0.7;
-
-        &>span {
-            margin-right: 6px;
-        }
-    }
+  &.primary {
+    background: $primary-color;
+    transition: 0.3s ease;
 
     &:hover {
-        cursor: pointer;
+      background: $primary-color-dark;
     }
+  }
 
-    &:disabled,
-    .disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
+  &.danger {
+    background: $danger-color;
+    transition: 0.3s ease;
+    &:hover {
+      background: $danger-color-dark;
     }
+  }
 
-    &.block {
-        width: 100%;
-        display: block;
+  &.success {
+    background: $success-color;
+    transition: 0.3s ease;
+    &:hover {
+      background: $success-color-dark;
     }
+  }
 
-    .icon-left {
-        padding-right: 10px;
+  &.default {
+    background: $white-color;
+    color: $black-color;
+    box-shadow: 0 2px 5px rgba($black-color, 0.1);
+    transition: 0.3s ease;
+    &:hover {
+      background: $color-text-lighter;
     }
+  }
 
-    .content {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+  &.loading {
+    opacity: 0.7;
+
+    & > span {
+      margin-right: 6px;
     }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled,
+  .disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.block {
+    width: 100%;
+    display: block;
+  }
+
+  .icon-left {
+    padding-right: 10px;
+  }
+
+  .content {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-.spinner{
-    &.danger{
-        .lds-dual-ring{
-            color: $danger-color !important;
-        }
-
+.spinner {
+  &.danger {
+    .lds-dual-ring {
+      color: $danger-color !important;
     }
+  }
 }

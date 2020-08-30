@@ -13,11 +13,23 @@
   color: white;
   cursor: pointer;
   font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center !important;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
   font-size: 12px;
-  justify-content: center !important;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
   border: 1px solid transparent;
+}
+
+@media screen and (max-width: 600px) {
+  .btn {
+    width: 100%;
+  }
 }
 
 .disabled {
@@ -34,32 +46,37 @@
   position: relative;
   text-decoration: none;
   -webkit-box-shadow: -3px 21px 42px -38px #5680f9;
-  -moz-box-shadow: -3px 21px 42px -38px #5680f9;
   box-shadow: -3px 21px 42px -38px #5680f9;
 }
+
 .btn:focus.primary,
 .btn:active.primary,
 .btn-sml:focus.primary,
 .btn-sml:active.primary,
 .btn.primary {
-  background: #0378a2;
+  background: #084c6b;
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+
 .btn:focus.primary:hover,
 .btn:active.primary:hover,
 .btn-sml:focus.primary:hover,
 .btn-sml:active.primary:hover,
 .btn.primary:hover {
-  background: #025370;
+  background: #042a3c;
 }
+
 .btn:focus.danger,
 .btn:active.danger,
 .btn-sml:focus.danger,
 .btn-sml:active.danger,
 .btn.danger {
   background: #ff652d;
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+
 .btn:focus.danger:hover,
 .btn:active.danger:hover,
 .btn-sml:focus.danger:hover,
@@ -67,14 +84,17 @@
 .btn.danger:hover {
   background: #f94200;
 }
+
 .btn:focus.success,
 .btn:active.success,
 .btn-sml:focus.success,
 .btn-sml:active.success,
 .btn.success {
   background: #3dd89a;
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+
 .btn:focus.success:hover,
 .btn:active.success:hover,
 .btn-sml:focus.success:hover,
@@ -82,6 +102,7 @@
 .btn.success:hover {
   background: #26bc80;
 }
+
 .btn:focus.default,
 .btn:active.default,
 .btn-sml:focus.default,
@@ -89,9 +110,12 @@
 .btn.default {
   background: #ffffff;
   color: #000000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+
 .btn:focus.default:hover,
 .btn:active.default:hover,
 .btn-sml:focus.default:hover,
@@ -99,6 +123,7 @@
 .btn.default:hover {
   background: #ccd6e1;
 }
+
 .btn:focus.loading,
 .btn:active.loading,
 .btn-sml:focus.loading,
@@ -106,6 +131,7 @@
 .btn.loading {
   opacity: 0.7;
 }
+
 .btn:focus.loading > span,
 .btn:active.loading > span,
 .btn-sml:focus.loading > span,
@@ -113,6 +139,7 @@
 .btn.loading > span {
   margin-right: 6px;
 }
+
 .btn:focus:hover,
 .btn:active:hover,
 .btn-sml:focus:hover,
@@ -120,6 +147,7 @@
 .btn:hover {
   cursor: pointer;
 }
+
 .btn:focus:disabled,
 .btn:focus .disabled,
 .btn:active:disabled,
@@ -133,6 +161,7 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
 .btn:focus.block,
 .btn:active.block,
 .btn-sml:focus.block,
@@ -141,6 +170,7 @@
   width: 100%;
   display: block;
 }
+
 .btn:focus .icon-left,
 .btn:active .icon-left,
 .btn-sml:focus .icon-left,
@@ -148,18 +178,24 @@
 .btn .icon-left {
   padding-right: 10px;
 }
+
 .btn:focus .content,
 .btn:active .content,
 .btn-sml:focus .content,
 .btn-sml:active .content,
 .btn .content {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .spinner.danger .lds-dual-ring {
   color: #ff652d !important;
 }
-
 /*# sourceMappingURL=Button.css.map */

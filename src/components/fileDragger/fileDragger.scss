@@ -1,12 +1,13 @@
 @import "../../styles/theme";
 
-.file-dragger{
-  background-color: $yellow-light;
+.file-dragger {
+  background-color: rgb(240, 240, 240);
   position: relative;
-  .file-dragger-inner{
+  .file-dragger-inner {
     position: relative;
     z-index: 2;
-    .file-upload-button{
+    .file-upload-button {
+      overflow: hidden;
       width: 100%;
       height: 150px;
       border-radius: 10px;
@@ -15,7 +16,8 @@
     }
   }
 
-  .content-dragger{
+  color: darken($color: white, $amount: 30%);
+  .content-dragger {
     position: absolute;
     max-width: 500px;
     width: 100%;
@@ -27,7 +29,7 @@
     top: 0;
     z-index: 0;
 
-    img{
+    img {
       width: 80px;
       margin-right: 40px;
     }

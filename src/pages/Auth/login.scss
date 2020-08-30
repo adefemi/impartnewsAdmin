@@ -8,13 +8,18 @@
   right: 0;
   bottom: 0;
 
+  .name {
+    font-size: 24px;
+    text-align: center;
+  }
+
   .logo {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 50px;
     img {
-      width: 200px;
+      width: 100px;
     }
   }
 

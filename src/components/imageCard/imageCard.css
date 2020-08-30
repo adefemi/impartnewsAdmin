@@ -7,6 +7,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .image-item .img-con {
   background-repeat: no-repeat;
   background-size: cover;
@@ -15,6 +16,7 @@
   height: 100%;
   border-radius: 10px;
 }
+
 .image-item .overlay {
   position: absolute;
   top: 0;
@@ -25,6 +27,7 @@
   background-color: rgba(0, 0, 0, 0.3) !important;
   border-radius: 10px;
 }
+
 .image-item .close {
   position: absolute;
   z-index: 2;
@@ -33,6 +36,7 @@
   color: #ff652d;
   cursor: pointer;
 }
+
 .image-item .set-cover {
   position: absolute;
   z-index: 2;
@@ -46,8 +50,10 @@
   padding: 5px 15px;
   border-radius: 20px;
   font-weight: 600;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .image-item .cover {
   position: absolute;
   z-index: 2;
@@ -57,13 +63,16 @@
   color: #1d9263;
   font-weight: 500;
   border: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   padding: 0 10px;
 }
+
 .image-item .cover svg {
   margin-top: 3px;
 }
+
 .image-item .progress {
   position: absolute;
   z-index: 2;
@@ -73,5 +82,4 @@
   height: 5px;
   background-color: #3dd89a;
 }
-
 /*# sourceMappingURL=imageCard.css.map */

@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from "react";
 import ms from "microseconds";
-import "./fileUploadNew.scss";
+import "./fileUploadNew.css";
 import { Notification } from "../notification/Notification";
 import { randomIDGenerator } from "../../utils/helper";
 import axios from "axios";
-import { FILE_UPLOAD_URL, tempToken } from "../../utils/urls";
 import proptype from "prop-types";
-import badFile from "../../assets/pngs/badFile.png";
-import { axiosHandler } from "../../utils/axiosHandler";
+import badFile from "./badFile.png";
+import { axiosHandler } from "../../utils/helper";
 
 function FileUploadNew(props) {
   const id = ms.now() + randomIDGenerator(5);
   const [ref, setRef] = useState(null);
-  const [imageData, setImageData] = useState([]);
+  const [imageData, setImageData] = useState(props.fileList);
   const [activeIndex, setActiveIndex] = useState(0);
   useEffect(() => {
     setRef(document.getElementById(id));
   }, []);
 
-  const onChangeFile = e => {
+  const onChangeFile = (e) => {
     let files = e.target.files;
     let validFile = [];
     for (let i = 0; i < files.length; i++) {
-      if (props.maxUpload && i + 1 > props.maxUpload) {
+      if (props.maxUpload && i + imageData.length + 1 > props.maxUpload) {
         Notification.bubble({
           type: "warning",
-          content: `Maximum image allow is ${props.maxUpload}`
+          content: `Maximum image allow is ${props.maxUpload}`,
         });
         break;
       }
@@ -34,14 +33,14 @@ function FileUploadNew(props) {
       } else {
         Notification.bubble({
           type: "error",
-          content: `${files[i]["name"]} is not a valid image type`
+          content: `${files[i]["name"]} is not a valid image type`,
         });
       }
     }
     setUpImageData(validFile);
   };
 
-  const setUpImageData = validImages => {
+  const setUpImageData = (validImages) => {
     let newList = [];
     for (let i = 0; i < validImages.length; i++) {
       let idValue = ms.now() + randomIDGenerator(5);
@@ -53,7 +52,7 @@ function FileUploadNew(props) {
         completed: false,
         hasError: false,
         id: idValue,
-        src: URL.createObjectURL(validImages[i])
+        src: URL.createObjectURL(validImages[i]),
       };
       newList.push(tempData);
     }
@@ -62,7 +61,7 @@ function FileUploadNew(props) {
   };
 
   const updateImageData = (id, progress, type = null) => {
-    let newList = imageData.map(item => {
+    let newList = imageData.map((item) => {
       if (!type) {
         if (item.id === id) {
           item.progress = progress;
@@ -101,21 +100,21 @@ function FileUploadNew(props) {
         method: props.method,
         token: props.token,
         callBack: updateImageData,
-        fileData: imageData[activeIndex]
+        fileData: imageData[activeIndex],
       });
     }
     props.onChange(imageData);
   }, [imageData, activeIndex]);
 
-  const checkImageValidity = imageType => {
+  const checkImageValidity = (imageType) => {
     let tempType = imageType.split("/");
     let ext = tempType[tempType.length - 1];
     return props.validImageTypesSrc.includes(ext);
   };
 
-  const removeFile = id => {
+  const removeFile = (id) => {
     let activeImage = {};
-    let newImageData = imageData.filter(item => {
+    let newImageData = imageData.filter((item) => {
       if (item.id === id) activeImage = item;
       return item.id !== id;
     });
@@ -126,9 +125,11 @@ function FileUploadNew(props) {
     }
   };
 
-  const deleteImage = id => {
-    let url = props.deleteUrl + `/${id}`;
-    axiosHandler("delete", url, props.token);
+  const deleteImage = (id) => {
+    let url = props.deleteUrl + `${id}`;
+    axiosHandler({ method: "delete", url, token: props.token }).catch(
+      (e) => null
+    );
   };
 
   useEffect(() => {
@@ -148,16 +149,17 @@ function FileUploadNew(props) {
           if (props.disabled) return;
           ref.click();
         }}
-        onDrop={e => {
+        onDrop={(e) => {
           e.preventDefault();
           if (props.disabled) return;
           onChangeFile({
             target: {
-              files: e.dataTransfer.files
-            }
+              files: e.dataTransfer.files,
+            },
           });
         }}
-        onDragOver={e => e.preventDefault()}
+        type="button"
+        onDragOver={(e) => e.preventDefault()}
       >
         {props.children}
       </button>
@@ -178,17 +180,18 @@ FileUploadNew.defaultProps = {
   validImageTypesSrc: ["gif", "jpeg", "png", "jpg"],
   fileName: "file",
   method: "post",
-  uploadUrl: FILE_UPLOAD_URL,
-  deleteUrl: FILE_UPLOAD_URL,
-  token: tempToken,
+  uploadUrl: "",
+  deleteUrl: "",
+  token: "",
   updateTrigger: () => null,
-  onChange: () => null
+  onChange: () => null,
 };
 
 FileUploadNew.propType = {
   disabled: proptype.bool,
   multiple: proptype.bool,
   validImageTypesSrc: proptype.array,
+  fileList: proptype.array,
   fileName: proptype.string,
   method: proptype.string,
   uploadUrl: proptype.string,
@@ -198,7 +201,7 @@ FileUploadNew.propType = {
   fileIdToRemove: proptype.any,
   updateTrigger: proptype.func,
   removeTrigger: proptype.bool,
-  maxUpload: proptype.number
+  maxUpload: proptype.number,
 };
 
 class UploadClass {
@@ -226,24 +229,21 @@ class UploadClass {
       method: this.method,
       url: this.uploadUrl,
       data: fileUpload,
-      headers: {
-        authorization: `Bearer ${this.token}`
-      },
-      onUploadProgress: uploadEvt => {
+      onUploadProgress: (uploadEvt) => {
         let percentCompleted = Math.round(
           (uploadEvt.loaded * 100) / uploadEvt.total
         );
         this.callBack(this.fileData.id, percentCompleted);
-      }
+      },
     }).then(
-      res => {
+      (res) => {
         this.callBack(
           this.fileData.id,
-          { src: res.data.results.file, id: res.data.results.id },
+          { src: res.data.file, id: res.data.id },
           "completed"
         );
       },
-      _ => {
+      (_) => {
         this.callBack(this.fileData.id, 0, "error");
       }
     );

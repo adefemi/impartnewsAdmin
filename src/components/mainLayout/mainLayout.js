@@ -1,24 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./mainlayout.scss";
 import { Link } from "react-router-dom";
-import { PUBLIC_URL } from "../../utils/urls";
+import { USER_ME } from "../../utils/urls";
 import AppIcon from "../icons/Icon";
+import { axiosHandler, getToken } from "../../utils/helper";
+import { USERTOKEN } from "../../utils/data";
+import { Button } from "../button/Button";
+
+export const checkIfTokenIsValid = (_) => {
+  return axiosHandler({
+    method: "get",
+    url: USER_ME,
+    token: getToken(),
+  });
+};
 
 function MainLayout(props) {
+  const [isLoading, setLoading] = useState(true);
+  const [sideBarStatus, setSideBarStatus] = useState(false);
+
+  useEffect(() => {
+    checkLoginState();
+  }, []);
+
+  const checkLoginState = async () => {
+    let token = localStorage.getItem(USERTOKEN);
+    if (!token) {
+      props.history.push("/login");
+      return;
+    }
+    let res = await checkIfTokenIsValid().catch((err) =>
+      props.history.push("/login")
+    );
+    if (!res) return;
+    setLoading(false);
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <div className="mainLayout">
       <div className="desktop-side-bar side-bar">
-        <SideBar />
+        <SideBar sideBarStatus={sideBarStatus} />
       </div>
       <div id="sideBar" className="mobile-side-bar closed">
-        <SideBar />
+        <SideBar sideBarStatus={sideBarStatus} />
       </div>
 
       <div id="mainBar" className="mainBar">
         <div className="navBar">
-          <div className="pageTitle">Dashboard</div>
+          <div className="pageTitle">Impartnews Admin</div>
           <div className="navRight">
-            <AppIcon type="feather" name="bell" />
+            <AppIcon
+              type="feather"
+              name={sideBarStatus ? "x" : "menu"}
+              onClick={() => setSideBarStatus(!sideBarStatus)}
+            />
           </div>
         </div>
         <div className="contentMain">
@@ -69,34 +106,46 @@ const Profile = (props) => {
   return (
     <div className="user_profile">
       <div className="desc">
-        <div className="avatar">AO</div>
+        <div className="avatar">IMP</div>
         <span>
-          Adefemi
-          <div className="small">Oseni</div>
+          Impartnewspoint
+          <div className="small">Admin</div>
         </span>
       </div>
-      <AppIcon name="chevronDown" type="feather" />
     </div>
   );
 };
 
+const logout = () => {
+  localStorage.removeItem(USERTOKEN);
+  window.location.reload();
+};
+
 const SideBar = (props) => {
   return (
-    <div className="sideBar">
+    <div className={`sideBar ${!props.sideBarStatus ? "close" : ""}`}>
       <Profile />
       <div className="sideItems">
         <SideLinks
           link={"/"}
-          title="Home"
+          title="Blogs"
           active={getActive("/")}
-          icon={<AppIcon name="ic_home" type="md" />}
+          icon={<AppIcon name="rss" type="icomoon" />}
         />
         <SideLinks
-          link={"/users"}
-          title="Users"
-          active={getActive("users")}
-          icon={<AppIcon name="users" type="icomoon" />}
+          link={"/tags"}
+          title="Tags"
+          active={getActive("tags")}
+          icon={<AppIcon name="bullhorn" type="icomoon" />}
         />
+        <SideLinks
+          link={"/marketting"}
+          title="Marketting"
+          active={getActive("marketting")}
+          icon={<AppIcon name="cart" type="icomoon" />}
+        />
+
+        <Button onClick={logout}>Logout</Button>
       </div>
     </div>
   );

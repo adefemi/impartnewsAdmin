@@ -4,15 +4,21 @@
   width: 100%;
   padding: 20px;
   position: relative;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   color: white;
   font-family: "Tajawal", sans-serif;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   margin-bottom: 20px;
   z-index: 100000001;
 }
+
 .notification-main .close-button-main {
   position: absolute;
   right: 0;
@@ -21,12 +27,14 @@
   color: white !important;
   cursor: pointer;
 }
+
 .notification-main .contents {
   padding: 5px 20px;
   font-size: 13px;
   font-weight: 600;
   color: white;
 }
+
 .notification-main .contents .title {
   font-size: 15px;
   font-weight: bold;
@@ -38,7 +46,7 @@
 }
 
 .notification-main.info {
-  background-color: #425CB9;
+  background-color: #425cb9;
 }
 
 .notification-main.warning {
@@ -78,12 +86,22 @@
   max-width: 100%;
   margin-right: 20px;
   margin-bottom: 20px;
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  animation: animateNotificationBubble 0.3s ease-in-out forwards;
+  -webkit-animation: animateNotificationBubble 0.3s ease-in-out forwards;
+          animation: animateNotificationBubble 0.3s ease-in-out forwards;
 }
+
 @media screen and (max-width: 480px) {
   .notification-bubble {
     width: 100%;
+  }
+}
+
+@-webkit-keyframes animateNotificationBubble {
+  to {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 
@@ -93,5 +111,4 @@
     margin-bottom: 20px;
   }
 }
-
 /*# sourceMappingURL=Notification.css.map */

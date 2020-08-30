@@ -1,6 +1,7 @@
 import moment from "moment";
 import _ from "lodash";
 import { USERTOKEN } from "./data";
+import Axios from "axios";
 
 export const errorHandler = (err, defaulted = false) => {
   if (defaulted) {
@@ -293,8 +294,7 @@ export const getArrayCount = ({ count = 5, start = 1, includePlus = true }) => {
 export const getToken = (_) => {
   let tokenObj = localStorage.getItem(USERTOKEN);
   if (tokenObj) {
-    tokenObj = JSON.parse(tokenObj);
-    return tokenObj.access;
+    return tokenObj;
   }
   return null;
 };
@@ -350,4 +350,41 @@ export const getHashString = (string) => {
     return null;
   });
   return newString;
+};
+
+export const axiosHandler = ({
+  method = "",
+  url = "",
+  token = null,
+  clientID = null,
+  internalSecurity = null,
+  data = {},
+  extra = null,
+}) => {
+  let methodType = method.toUpperCase();
+  if (
+    ["GET", "POST", "PATCH", "PUT", "DELETE"].includes(methodType) ||
+    {}.toString(data) !== "[object Object]"
+  ) {
+    let axiosProps = { method: methodType, url, data };
+
+    if (token) {
+      axiosProps.headers = { Authorization: `Bearer ${token}` };
+    }
+    if (clientID) {
+      axiosProps.headers = { ...axiosProps.headers, "client-id": clientID };
+    }
+    if (internalSecurity) {
+      axiosProps.headers = {
+        ...axiosProps.headers,
+        "internal-security-token": internalSecurity,
+      };
+    }
+    if (extra) {
+      axiosProps.headers = { ...axiosProps.headers, ...extra };
+    }
+    return Axios(axiosProps);
+  } else {
+    alert(`method ${methodType} is not accepted or data is not an object`);
+  }
 };

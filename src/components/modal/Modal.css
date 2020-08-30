@@ -4,13 +4,18 @@
   width: 100%;
   padding: 20px;
   position: relative;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-family: "Tajawal", sans-serif;
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   margin-bottom: 20px;
   color: #000000;
 }
+
 .modal-main .close-button {
   position: absolute;
   right: 20px;
@@ -18,12 +23,14 @@
   display: block;
   cursor: pointer;
 }
+
 .modal-main .contents {
   padding: 5px 20px;
   font-size: 14px;
   width: 100%;
   color: #000000;
 }
+
 .modal-main .contents .title {
   font-size: 14px;
   font-weight: 600;
@@ -76,9 +83,17 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   z-index: 1;
 }
@@ -86,21 +101,33 @@
 .modal-bubble {
   min-width: 300px;
   max-width: 600px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: white;
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  animation: animateModalBubble 0.3s ease-in-out forwards;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -webkit-animation: animateModalBubble 0.3s ease-in-out forwards;
+          animation: animateModalBubble 0.3s ease-in-out forwards;
 }
+
 .modal-bubble .components {
   width: 100%;
   padding: 0 20px 20px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
+
 .modal-bubble .components .closebutt {
-  align-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   margin-left: 10px;
 }
 
@@ -114,28 +141,36 @@
   padding: 0 20px;
   z-index: 100000001;
 }
+
 .modal-root-fixed .modal-bubble-fixed {
   width: 100%;
   max-width: 600px;
+  -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
   position: absolute;
   left: 50%;
   top: -50%;
-  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
   max-height: 80vh;
   overflow-y: auto;
-  animation: modalBubble 0.5s ease-in-out forwards;
+  -webkit-animation: modalBubble 0.5s ease-in-out forwards;
+          animation: modalBubble 0.5s ease-in-out forwards;
   padding: 0 20px !important;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
+
 .modal-root-fixed .modal-bubble-fixed .inner {
   background-color: white;
   position: relative;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
   height: 100%;
   border-radius: 6px;
 }
+
 .modal-root-fixed .modal-bubble-fixed .close-button {
   position: absolute;
   right: 0;
@@ -144,6 +179,7 @@
   cursor: pointer;
   z-index: 50000000;
 }
+
 .modal-root-fixed .modal-bubble-fixed .title {
   padding: 20px;
   font-family: "Nunito Sans", sans-serif;
@@ -151,17 +187,25 @@
   font-weight: bold;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .modal-root-fixed .modal-bubble-fixed .contents {
   padding: 20px;
 }
+
 .modal-root-fixed .modal-bubble-fixed .footer {
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
+
 .modal-root-fixed .modal-bubble-fixed .footer button {
   margin-right: 10px;
 }
+
 .modal-root-fixed.infinite-width .modal-bubble-fixed {
   max-width: 100%;
 }
@@ -169,39 +213,85 @@
 .modal-node.closed {
   opacity: 0;
 }
+
 .modal-node.closed .modal-bubble {
-  animation: animateModalOut 0.3s ease-in-out forwards;
+  -webkit-animation: animateModalOut 0.3s ease-in-out forwards;
+          animation: animateModalOut 0.3s ease-in-out forwards;
 }
 
-@keyframes animateModalBubble {
+@-webkit-keyframes animateModalBubble {
   from {
     opacity: 0;
-    transform: rotateX(90deg);
+    -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
     margin-top: 200px;
   }
   to {
     opacity: 1;
     margin-top: 20px;
-    transform: rotateX(0);
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
   }
 }
-@keyframes animateModalOut {
+
+@keyframes animateModalBubble {
+  from {
+    opacity: 0;
+    -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+    margin-top: 200px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 20px;
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+}
+
+@-webkit-keyframes animateModalOut {
   from {
     opacity: 1;
     margin-top: 20px;
-    transform: rotateX(0);
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
   }
   to {
     opacity: 0;
     margin-top: -100px;
-    transform: rotateX(0);
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
   }
 }
-@keyframes modalBubble {
+
+@keyframes animateModalOut {
+  from {
+    opacity: 1;
+    margin-top: 20px;
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
   to {
-    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+    margin-top: -100px;
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+}
+
+@-webkit-keyframes modalBubble {
+  to {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
     top: 50%;
   }
 }
 
+@keyframes modalBubble {
+  to {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+    top: 50%;
+  }
+}
 /*# sourceMappingURL=Modal.css.map */

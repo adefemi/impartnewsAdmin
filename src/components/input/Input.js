@@ -7,7 +7,15 @@ import { Spinner } from "../spinner/Spinner";
 
 const defaultPropList = {
   value: PropTypes.any,
-  type: PropTypes.oneOf(["text", "number", "password", "tel", "phone", "date"]),
+  type: PropTypes.oneOf([
+    "text",
+    "number",
+    "password",
+    "tel",
+    "phone",
+    "date",
+    "file",
+  ]),
   onChange: PropTypes.func.isRequired,
   error: PropTypes.bool,
   errorText: PropTypes.string,

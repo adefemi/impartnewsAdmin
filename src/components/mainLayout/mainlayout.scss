@@ -68,33 +68,6 @@ $sideBarWidth: 220px;
       width: 50px;
       border-color: transparent;
     }
-
-    @media screen and (max-width: 600px) {
-      width: 90%;
-      height: 40px;
-      max-width: 350px;
-
-      .info-main {
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 16px;
-      }
-
-      .content-mail {
-        left: 35px;
-        height: 100%;
-        font-size: 12px;
-        width: calc(100% - 35px);
-        min-width: 280px;
-        padding: 0 10px;
-        line-height: 12px;
-      }
-
-      &.close {
-        width: 40px;
-      }
-    }
   }
 
   .sideBar {
@@ -105,6 +78,8 @@ $sideBarWidth: 220px;
     height: 100%;
     overflow-y: auto;
     position: fixed;
+    z-index: 1000000000;
+    transition: 0.3s ease;
 
     .logo {
       width: 150px;
@@ -154,6 +129,13 @@ $sideBarWidth: 220px;
 
       &.userControl {
         color: $primary-color;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      &.close {
+        transition: 0.3s ease;
+        left: -$sideBarWidth;
       }
     }
   }
@@ -213,11 +195,11 @@ $sideBarWidth: 220px;
     right: 0;
     left: $sideBarWidth;
     top: 0;
+    z-index: 1000;
 
-    @media screen and (max-width: 900px) {
-      .mobile {
-        display: flex;
-      }
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      left: 0;
     }
 
     .pageTitle {
@@ -231,8 +213,12 @@ $sideBarWidth: 220px;
     }
 
     .navRight {
-      display: flex;
+      display: none;
       align-items: center;
+
+      @media screen and (max-width: 600px) {
+        display: flex;
+      }
 
       svg {
         color: darken($color: white, $amount: 60%);
@@ -241,10 +227,6 @@ $sideBarWidth: 220px;
       .navItem {
         margin-right: 20px;
         &:last-child {
-          margin-right: 0;
-        }
-
-        @media screen and (max-width: 600px) {
           margin-right: 0;
         }
       }
@@ -268,6 +250,11 @@ $sideBarWidth: 220px;
     left: $sideBarWidth;
     transition: 0.3s ease;
     overflow-y: auto;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      left: 0;
+    }
 
     .overlay {
       position: absolute;
@@ -329,51 +316,6 @@ $sideBarWidth: 220px;
       width: 20px;
       height: 20px;
       color: darken(white, 40%);
-    }
-  }
-
-  @media screen and (max-width: 380px) {
-    .navLogo {
-      width: 80px;
-    }
-
-    .moreSide {
-      margin-right: 5px;
-    }
-
-    .contentMain {
-      min-width: 200px;
-    }
-    .mainBar {
-      width: calc(100% - 180px);
-      left: 180px;
-    }
-
-    .notifier {
-      margin-right: 20px;
-      svg {
-        width: 15px;
-        height: 15px;
-      }
-    }
-  }
-}
-@media screen and (max-width: 900px) {
-  .mobile-side-bar.closed {
-    .sideBar {
-      left: -$sideBarWidth;
-    }
-
-    & ~ .mainBar {
-      left: 0;
-      width: 100%;
-
-      .pageTitle {
-        font-size: 20px;
-      }
-      .overlay {
-        display: none;
-      }
     }
   }
 }

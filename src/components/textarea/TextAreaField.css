@@ -8,21 +8,25 @@ textarea {
   border: 1px solid #bec9d1;
   border-radius: 2px;
   min-width: 100%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-family: "Nunito Sans", sans-serif;
   display: block;
   margin: 0;
   outline: none;
   font-size: 14px;
 }
+
 textarea:disabled {
   background: #f9f9f9;
 }
 
 textarea:not(.textarea-error):focus,
 textarea:not(.textarea-error):hover {
-  border-color: #75d9fc;
-  box-shadow: 0 0 10px 0 rgba(3, 120, 162, 0.2);
+  border-color: #4dbef2;
+  -webkit-box-shadow: 0 0 10px 0 rgba(8, 76, 107, 0.2);
+          box-shadow: 0 0 10px 0 rgba(8, 76, 107, 0.2);
+  -webkit-transition: 0.3s ease all;
   transition: 0.3s ease all;
 }
 
@@ -42,5 +46,4 @@ textarea:disabled:hover {
   color: #ff652d;
   font-size: 14px;
 }
-
 /*# sourceMappingURL=TextAreaField.css.map */

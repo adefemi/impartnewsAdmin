@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500&display=swap");
-.Radio[type=radio]:checked {
+.Radio[type="radio"]:checked {
   position: absolute;
   left: -9999px;
 }
-.Radio[type=radio]:checked + label {
+
+.Radio[type="radio"]:checked + label {
   font-family: "Tajawal", sans-serif;
   position: relative;
   padding-left: 28px;
@@ -14,10 +15,11 @@
   line-height: 22px;
   display: inline-block;
   color: #666;
-  color: #012e3e;
+  color: #01090c;
 }
-.Radio[type=radio]:checked + label:before {
-  content: "";
+
+.Radio[type="radio"]:checked + label:before {
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -26,13 +28,14 @@
   border: 2px solid #ddd;
   border-radius: 100%;
   background: #fff;
-  border-color: #0378a2;
+  border-color: #084c6b;
 }
-.Radio[type=radio]:checked + label:after {
-  content: "";
+
+.Radio[type="radio"]:checked + label:after {
+  content: '';
   width: 12px;
   height: 12px;
-  background: #0378a2;
+  background: #084c6b;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -43,11 +46,13 @@
   -webkit-transform: scale(1);
   transform: scale(1);
 }
-.Radio[type=radio]:not(:checked) {
+
+.Radio[type="radio"]:not(:checked) {
   position: absolute;
   left: -9999px;
 }
-.Radio[type=radio]:not(:checked) + label {
+
+.Radio[type="radio"]:not(:checked) + label {
   font-family: "Tajawal", sans-serif;
   position: relative;
   padding-left: 28px;
@@ -58,8 +63,9 @@
   display: inline-block;
   color: #666;
 }
-.Radio[type=radio]:not(:checked) + label:before {
-  content: "";
+
+.Radio[type="radio"]:not(:checked) + label:before {
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -69,11 +75,12 @@
   border-radius: 100%;
   background: #fff;
 }
-.Radio[type=radio]:not(:checked) + label:after {
-  content: "";
+
+.Radio[type="radio"]:not(:checked) + label:after {
+  content: '';
   width: 12px;
   height: 12px;
-  background: #0378a2;
+  background: #084c6b;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -84,12 +91,14 @@
   -webkit-transform: scale(0);
   transform: scale(0);
 }
-.Radio[type=radio]:disabled + label {
+
+.Radio[type="radio"]:disabled + label {
   cursor: not-allowed;
-  opacity: 0.7;
+  opacity: .7;
 }
-.Radio[type=radio]:disabled + label:before {
-  content: "";
+
+.Radio[type="radio"]:disabled + label:before {
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -99,11 +108,12 @@
   border-radius: 100%;
   background: #f5f5f5;
 }
-.Radio[type=radio]:disabled + label:after {
-  content: "";
+
+.Radio[type="radio"]:disabled + label:after {
+  content: '';
   width: 12px;
   height: 12px;
-  background: #049dd4;
+  background: #0c6e9a;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -111,5 +121,4 @@
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-
 /*# sourceMappingURL=Radio.css.map */

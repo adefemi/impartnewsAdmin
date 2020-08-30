@@ -1,8 +1,10 @@
 import React from "react";
 import "./transactionTable.scss";
 import proptype from "prop-types";
+import { Spinner } from "../spinner/Spinner";
 
-function TransactionTable({ keys, values }) {
+function TransactionTable(props) {
+  const { keys, values } = props;
   if (!keys || !values) {
     return <div />;
   }
@@ -16,26 +18,36 @@ function TransactionTable({ keys, values }) {
             </th>
           ))}
         </thead>
-        <tbody>
-          {values.map((item, index) => (
-            <tr className="body" key={index}>
-              {item.map((content, key) => (
-                <td className="tbody" key={key}>
-                  {content}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
+        {!props.loading && (
+          <tbody>
+            {values.map((item, index) => (
+              <tr className="body" key={index}>
+                {item.map((content, key) => (
+                  <td className="tbody" key={key}>
+                    {content}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        )}
       </table>
-      {values.length < 1 && <div className="noData">No data found...</div>}
+      {values.length < 1 && !props.loading && (
+        <div className="noData">No data found...</div>
+      )}
+      {props.loading && (
+        <div className="noData">
+          <Spinner color="#c3c3c3" />
+        </div>
+      )}
     </div>
   );
 }
 
-TransactionTable.propType = {
+TransactionTable.propTypes = {
   keys: proptype.array,
-  values: proptype.arrayOf(proptype.array)
+  values: proptype.arrayOf(proptype.array),
+  loading: proptype.bool,
 };
 
 export default TransactionTable;

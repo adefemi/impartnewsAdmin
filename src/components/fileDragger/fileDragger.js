@@ -1,18 +1,12 @@
 import React from "react";
-import "./fileDragger.scss";
-import fileDragImg from "../../assets/images/file-drag.svg";
+import "./fileDragger.css";
 import FileUploadNew from "../fileUploadNew/fileUploadNew";
-import { FILE_UPLOAD_URL, tempToken } from "../../utils/urls";
 import proptype from "prop-types";
-import { getToken } from "../../utils/helper";
 
 function FileDragger(props) {
   return (
     <div className="file-dragger">
-      <div className="content-dragger">
-        <img src={fileDragImg} alt="" />
-        {props.children}
-      </div>
+      <div className="content-dragger">{props.children}</div>
       <FileUploadNew
         className="file-dragger-inner"
         dragger
@@ -28,6 +22,8 @@ function FileDragger(props) {
         updateTrigger={props.updateTrigger}
         removeTrigger={props.removeTrigger}
         maxUpload={props.maxUpload}
+        disabled={props.disabled}
+        fileList={props.fileList}
       />
     </div>
   );
@@ -38,11 +34,11 @@ FileDragger.defaultProps = {
   validImageTypesSrc: ["gif", "jpeg", "png", "jpg"],
   fileName: "file",
   method: "post",
-  uploadUrl: FILE_UPLOAD_URL,
-  deleteUrl: FILE_UPLOAD_URL,
-  token: getToken(),
+  uploadUrl: "",
+  deleteUrl: "",
+  token: "",
   onChange: () => null,
-  updateTrigger: () => null
+  updateTrigger: () => null,
 };
 
 FileDragger.propType = {
@@ -56,7 +52,10 @@ FileDragger.propType = {
   onChange: proptype.func,
   fileIdToRemove: proptype.any,
   updateTrigger: proptype.func,
-  removeTrigger: proptype.bool
+  removeTrigger: proptype.bool,
+  maxUpload: proptype.number,
+  disabled: proptype.bool,
+  fileList: proptype.array,
 };
 
 export default FileDragger;

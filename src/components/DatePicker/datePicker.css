@@ -4,16 +4,23 @@
   font-family: "Nunito Sans", sans-serif;
   position: relative;
 }
+
 .adx-datePicker .input-field {
   border: 1px solid #e6e6e6;
   border-radius: 2px;
   height: 40px;
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 0 10px;
-  align-items: center;
-  transition: 0.3s ease;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
 }
+
 .adx-datePicker .input-field input {
   border: none;
   outline: none;
@@ -21,15 +28,19 @@
   text-transform: capitalize;
   color: #666666;
 }
+
 .adx-datePicker .input-field input:disabled {
   background-color: transparent;
 }
+
 .adx-datePicker .input-field img {
   width: 15px;
 }
+
 .adx-datePicker .input-field:hover {
-  border-color: #0378a2;
+  border-color: #084c6b;
 }
+
 .adx-datePicker .date-picker-con {
   position: fixed;
   z-index: 1000;
@@ -39,37 +50,54 @@
   right: 0;
   bottom: 0;
 }
+
 .adx-datePicker .date-picker {
   background-color: white;
   border-radius: 4px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
   position: fixed;
   z-index: 1001;
   min-width: 250px;
-  transition: 0.4s ease;
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
   opacity: 0;
   visibility: hidden;
-  transform-origin: left top;
-  transform: scale(1);
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
+
 .adx-datePicker .date-picker.show {
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
+
 .adx-datePicker .date-picker .picker-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 10px 12px;
-  box-sizing: border-box;
-  align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .adx-datePicker .date-picker .picker-heading .backKey {
   font-size: 12px;
   font-weight: 600;
-  color: #0378a2;
+  color: #084c6b;
   cursor: pointer;
 }
+
 .adx-datePicker .date-picker .picker-heading button {
   margin: 0;
   padding: 0;
@@ -78,30 +106,45 @@
   cursor: pointer;
   outline: none;
 }
+
 .adx-datePicker .date-picker .picker-heading button img {
   width: 15px;
 }
+
 .adx-datePicker .date-picker .picker-heading .rcontrol button {
-  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
+
 .adx-datePicker .date-picker .picker-heading .lcontrol, .adx-datePicker .date-picker .picker-heading .rcontrol {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .adx-datePicker .date-picker .picker-heading .context-main {
   font-size: 13px;
   color: #4d4d4d;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .adx-datePicker .date-picker .picker-heading .context-main span {
   cursor: pointer;
-  transition: 0.3s ease;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
   margin: 0 3px;
   text-transform: capitalize;
 }
+
 .adx-datePicker .date-picker .picker-heading .context-main span:hover {
-  color: #0378a2;
+  color: #084c6b;
 }
+
 .adx-datePicker .date-picker .body {
   padding: 0 10px;
   padding-bottom: 10px;
@@ -109,40 +152,52 @@
   text-transform: capitalize;
   font-size: 13px;
 }
+
 .adx-datePicker .date-picker .body .date-data {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
 }
+
 .adx-datePicker .date-picker .body .date-data .weekTitle {
   height: 35px;
   line-height: 35px;
 }
+
 .adx-datePicker .date-picker .body .weekDays {
   color: #4d4d4d;
-  transition: 0.3s ease;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
   cursor: pointer;
   height: 35px;
   line-height: 35px;
   border-radius: 2px;
 }
+
 .adx-datePicker .date-picker .body .weekDays:hover {
   background-color: #f2f2f2;
 }
+
 .adx-datePicker .date-picker .body .weekDays.disabled:hover {
   background-color: unset !important;
   cursor: default !important;
 }
+
 .adx-datePicker .date-picker .body .weekDays.active {
-  background-color: #0378a2;
+  background-color: #084c6b;
   color: white;
 }
+
 .adx-datePicker .date-picker .body .weekDays.disabled {
   color: #e6e6e6;
 }
+
 .adx-datePicker .date-picker .body .month-data {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
   grid-gap: 2em;
 }
-
 /*# sourceMappingURL=datePicker.css.map */
