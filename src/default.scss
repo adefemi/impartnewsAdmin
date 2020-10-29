@@ -8,11 +8,6 @@ body {
   box-sizing: border-box;
   font-family: $primary-font;
   max-height: 100vh;
-  overflow-y: hidden;
-
-  & > * {
-    // transition: .3s ease;
-  }
 }
 
 .text-capitalized {

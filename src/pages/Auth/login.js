@@ -47,7 +47,7 @@ function Login(props) {
   return (
     <div className="auth-container">
       <div className="logo">
-        <img src={logo} />
+        <img src={logo} alt="" s />
       </div>
       <form onSubmit={onSubmit} className="login-form">
         <h3>Sign In</h3>

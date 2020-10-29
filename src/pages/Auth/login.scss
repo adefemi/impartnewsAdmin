@@ -2,11 +2,12 @@
 
 .auth-container {
   background-color: #f5f5fb;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  height: 100%;
+  overflow: auto !important;
 
   .name {
     font-size: 24px;
@@ -17,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    padding-top: 50px;
     img {
       width: 100px;
     }
